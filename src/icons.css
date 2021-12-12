@@ -1,0 +1,11 @@
+.material-icons, .bi{
+    width: var(--icon-size);
+    height: var(--icon-size);
+}
+
+.bi{
+    font-size: calc(var(--icon-size) - 5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

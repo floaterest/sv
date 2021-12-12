@@ -1,0 +1,48 @@
+:root{
+    --white: #f1f1f1;
+    --lightest-gray: #bab6c0;
+    --lighter-gray: #8b888f;
+    --light-gray: #69676c;
+    --gray: #363537;
+    --dark-gray: #222;
+    --darker-gray: #191919;
+    --darkest-gray: #131313;
+    --black: #000;
+
+    --accent: #39c5bb;
+
+    --red: #fc618d;
+    --orange: #fd9353;
+    --yellow: #fce566;
+    --green: #7bd88f;
+    --blue: #5ad4e6;
+    --purple: #948ae3;
+
+    --background-color: var(--darkest-gray);
+    --text-color: var(--white);
+    --nav-color: var(--black);
+    --a-color: var(--yellow);
+
+    --font-family: 'Source Sans Pro';
+    --nav-padding: 0.25em;
+    --icon-size: 24px;
+}
+
+@font-face{
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3aPw.ttf) format('truetype');
+}
+
+body{
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--font-family), sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: var(--a-color);
+}
