@@ -1,39 +1,32 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
-
-	const dispatch = createEventDispatcher();
-
-	export let name: string;
+	export let key: string;
 	export let icon = '';
 	export let href = '';
 	export let last = false;
 	export let swap = false;
-
-	let lock = false;
-
-	function click(){
-		dispatch('toggle');
-		lock = !lock;
-	}
+	export let selected = false;
+	export let onclick: (key: string) => void;
 </script>
 
 {#if href}
-    <a on:click={click} class:lock class:swap class:last class="{$$props.class}" style="{$$props.style}" {href}>
+    <a on:click={()=>onclick(key)} class:selected class:swap class:last {href}
+       class="{$$props.class}" style="{$$props.style}">
         {#if icon}
             {@html icon}
         {:else}
             <slot/>
         {/if}
-        <span class="text">{name}</span>
+        <span class="text">{key}</span>
     </a>
 {:else}
-    <div on:click={click} class:lock class:swap class:last class="{$$props.class}" style="{$$props.style}">
+    <div on:click={()=>onclick(key)} class:selected class:swap class:last
+         class="{$$props.class}" style="{$$props.style}">
         {#if icon}
             {@html icon}
         {:else}
             <slot/>
         {/if}
-        <span class="text">{name}</span>
+        <span class="text">{key}</span>
     </div>
 {/if}
 
@@ -47,7 +40,7 @@
         gap: var(--nav-padding);
     }
 
-    div:hover, a:hover, .lock{
+    div:hover, a:hover, .selected{
         box-shadow: inset 2px 0 0 0 currentColor;
     }
 

@@ -7,26 +7,26 @@
 	const bootstrap = (id: string) => `<i class="bi bi-${id}"></i>`;
 
 	const top = {
-		name: 'Games',
+		key: 'Games',
 		icon: material('sports_esports'),
 		swap: true,
 		style: 'color: var(--accent)'
 	};
 	const items = [
 		{
-			name: 'Minesweeper',
+			key: 'Minesweeper',
 			icon: material('settings_applications')
 		},
 		{
-			name: 'Arithmetic',
+			key: 'Arithmetic',
 			icon: material('calculate')
 		},
 		{
-			name: 'Flip',
+			key: 'Flip',
 			icon: material('flip')
 		},
 		{
-			name: 'GitHub',
+			key: 'GitHub',
 			icon: bootstrap('github'),
 			last: true,
 			href: 'https://github.com/Floaterest/'
@@ -35,3 +35,5 @@
 </script>
 
 <Nav {top} {items}/>
+
+hey

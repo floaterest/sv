@@ -2,7 +2,7 @@
 	import NavItem from './NavItem.svelte';
 
 	type NavProp = {
-		name: string,
+		key: string,
 		// html element
 		icon?: string,
 		href?: string,
@@ -12,18 +12,31 @@
 
 	export let top: NavProp;
 	export let items: NavProp[] = [];
+	export let selected: string;
 
+	items.forEach(v => v['selected'] = false);
 	let expanded = false;
+
+	function onclick(key: string){
+		selected = key;
+		console.log(key);
+		items = items.map(v => ({ ...v, selected: key == v.key }));
+	}
 </script>
 
 <nav class:expanded>
-    <NavItem {...top} on:toggle={()=>expanded=!expanded}/>
+    <NavItem {...top} onclick={()=>expanded=!expanded}/>
     {#each items as item}
-        <NavItem {...item}/>
+        <NavItem {...item} bind:key={item.key} {onclick}/>
     {/each}
 </nav>
 
 <style>
+    :global(body){
+        margin: 0 0 0 var(--nav-width);
+        border: solid 10px white;
+    }
+
     nav{
         height: 100%;
         background-color: var(--nav-color);
@@ -32,7 +45,7 @@
         position: fixed;
         top: 0;
         left: 0;
-        width: calc(var(--nav-padding) * 2 + var(--icon-size));
+        width: var(--nav-width);
 
         display: flex;
         flex-direction: column;

@@ -26,6 +26,7 @@
     --font-family: 'Source Sans Pro';
     --nav-padding: 0.25em;
     --icon-size: 24px;
+    --nav-width: calc(var(--nav-padding) * 2 + var(--icon-size));
 }
 
 @font-face{
