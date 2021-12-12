@@ -19,13 +19,12 @@
 
 	function onclick(key: string){
 		selected = key;
-		console.log(key);
 		items = items.map(v => ({ ...v, selected: key == v.key }));
 	}
 </script>
 
 <nav class:expanded>
-    <NavItem {...top} onclick={()=>expanded=!expanded}/>
+    <NavItem {...top} onclick={()=>expanded=!expanded} selected="{expanded}"/>
     {#each items as item}
         <NavItem {...item} bind:key={item.key} {onclick}/>
     {/each}
@@ -34,7 +33,6 @@
 <style>
     :global(body){
         margin: 0 0 0 var(--nav-width);
-        border: solid 10px white;
     }
 
     nav{

@@ -32,8 +32,9 @@
 			href: 'https://github.com/Floaterest/'
 		}
 	];
+	let selected = 'Games';
 </script>
 
-<Nav {top} {items}/>
+<Nav {top} {items} bind:selected/>
 
-hey
+{selected}
