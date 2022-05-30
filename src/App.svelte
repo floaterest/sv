@@ -6,35 +6,31 @@
 	const material = (id: string) => `<span class="material-icons">${id}</span>`;
 	const bootstrap = (id: string) => `<i class="bi bi-${id}"></i>`;
 
-	const top = {
-		key: 'Games',
-		icon: material('sports_esports'),
-		swap: true,
-		style: 'color: var(--accent)'
-	};
-	const items = [
-		{
-			key: 'Minesweeper',
+	const items = {
+		'Games': {
+			icon: material('sports_esports'),
+			href: '/',
+			swap: true,
+			style: 'color: var(--accent)'
+		},
+		'Minesweeper': {
 			icon: material('settings_applications')
 		},
-		{
-			key: 'Arithmetic',
+		'Arithmetic': {
 			icon: material('calculate')
 		},
-		{
-			key: 'Flip',
+		'Flip': {
 			icon: material('flip')
 		},
-		{
-			key: 'GitHub',
+		'GitHub': {
 			icon: bootstrap('github'),
 			last: true,
 			href: 'https://github.com/Floaterest/'
 		}
-	];
+	};
 	let selected = 'Games';
 </script>
 
-<Nav {top} {items} bind:selected/>
+<Nav {items} bind:selected/>
 
 {selected}

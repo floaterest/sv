@@ -2,31 +2,28 @@
 	import NavItem from './NavItem.svelte';
 
 	type NavProp = {
-		key: string,
 		// html element
 		icon?: string,
 		href?: string,
 		last?: boolean,
 		swap?: boolean,
+		selected?: boolean,
 	}
 
-	export let top: NavProp;
-	export let items: NavProp[] = [];
+	export let items: { [id: string]: NavProp } = {};
 	export let selected: string;
 
-	items.forEach(v => v['selected'] = false);
-	let expanded = false;
+	Object.values(items).forEach(item => item.selected = false);
 
 	function onclick(key: string){
 		selected = key;
-		items = items.map(v => ({ ...v, selected: key == v.key }));
+		Object.keys(items).forEach(key => items[key].selected = key === selected);
 	}
 </script>
 
-<nav class:expanded>
-    <NavItem {...top} onclick={()=>expanded=!expanded} selected="{expanded}"/>
-    {#each items as item}
-        <NavItem {...item} bind:key={item.key} {onclick}/>
+<nav>
+    {#each Object.keys(items) as key}
+        <NavItem {...items[key]} bind:key={key} {onclick}/>
     {/each}
 </nav>
 
@@ -50,11 +47,11 @@
         gap: var(--nav-padding);
     }
 
-    nav:not(.expanded) :global(.text){
+    nav :global(.text){
         display: none;
     }
 
-    nav.expanded, nav:hover{
+    nav:hover{
         width: unset;
     }
 
