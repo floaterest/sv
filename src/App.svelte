@@ -1,5 +1,9 @@
 <script lang="ts">
 	import Nav from './Nav.svelte';
+	import LocalStorage from './LocalStorage.svelte';
+
+	import {init} from './constants';
+
 	import './monokai.css';
 	import './icons.css';
 
@@ -22,6 +26,10 @@
 		'Flip': {
 			icon: material('flip')
 		},
+		'LocalStorage': {
+			icon: material('storage'),
+			last: true
+		},
 		'GitHub': {
 			icon: bootstrap('github'),
 			last: true,
@@ -31,6 +39,12 @@
 	let selected = 'Games';
 </script>
 
-<Nav {items} bind:selected/>
+<Nav bind:selected {items}/>
 
-{selected}
+<LocalStorage key="games" class="local" storage={init}/>
+
+<style>
+    .local{
+        font-family: "consolas", monospace;
+    }
+</style>

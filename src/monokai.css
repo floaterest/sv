@@ -47,3 +47,45 @@ a{
     text-decoration: none;
     color: var(--a-color);
 }
+
+input{
+    color: unset;
+    background-color: unset;
+    border: unset;
+    font: unset;
+    padding: 0;
+}
+
+input:focus-visible{
+    outline: 1px white solid;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* region syntax */
+.keyword{
+    color: var(--red);
+}
+
+.string{
+    color: var(--yellow);
+}
+
+.number, .boolean{
+    color: var(--purple);
+}
+
+.punctuation{
+    color: var(--light-gray);
+}
+/* endregion syntax */
