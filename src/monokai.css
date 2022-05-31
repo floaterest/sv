@@ -37,6 +37,7 @@
     src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3aPw.ttf) format('truetype');
 }
 
+/* region HTML tags */
 body{
     background-color: var(--background-color);
     color: var(--text-color);
@@ -48,6 +49,7 @@ a{
     color: var(--a-color);
 }
 
+/* region input */
 input{
     color: unset;
     background-color: unset;
@@ -61,18 +63,19 @@ input:focus-visible{
 }
 
 /* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
+input[type=number]{
+    -moz-appearance: textfield;
 }
+/* endregion input */
+/* endregion HTML tags */
 
-/* region syntax */
+/* region YAML syntax */
 .keyword{
     color: var(--red);
 }
@@ -88,4 +91,4 @@ input[type=number] {
 .punctuation{
     color: var(--light-gray);
 }
-/* endregion syntax */
+/* endregion YAML syntax */

@@ -30,12 +30,12 @@
 </script>
 
 <nav>
-    <div class="nav-top">
+    <div class="top">
         {#each Object.entries(top) as [key, value]}
             <NavItem {...value} {key} on:click="{()=>topClick(key)}"/>
         {/each}
     </div>
-    <div class="nav-bottom">
+    <div class="bottom">
         {#each Object.entries(bottom) as [key, value]}
             <NavItem {...value} {key} on:click={()=>bottomClick(key)}/>
         {/each}
@@ -62,27 +62,27 @@
         gap: var(--nav-padding);
     }
 
-    nav .nav-top > :global(*:first-child){
-        padding-top: var(--nav-padding);
-    }
-
-    nav .nav-bottom{
-        margin-top: auto;
-    }
-
-    nav .nav-bottom > :global(*:last-child){
-        padding-bottom: var(--nav-padding);
+    nav:hover{
+        width: unset;
     }
 
     nav :global(.text){
         display: none;
     }
 
-    nav:hover{
-        width: unset;
-    }
-
     nav:hover :global(.text){
         display: inline;
+    }
+
+    nav .nav-top > :global(*:first-child){
+        padding-top: var(--nav-padding);
+    }
+
+    nav .bottom{
+        margin-top: auto;
+    }
+
+    nav .bottom > :global(*:last-child){
+        padding-bottom: var(--nav-padding);
     }
 </style>
