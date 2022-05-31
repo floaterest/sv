@@ -2,7 +2,7 @@
 	import Nav from './Nav.svelte';
 	import LocalStorage from './LocalStorage.svelte';
 
-	import {init} from './constants';
+	import { init } from './constants';
 
 	import './monokai.css';
 	import './icons.css';
@@ -10,7 +10,7 @@
 	const material = (id: string) => `<span class="material-icons">${id}</span>`;
 	const bootstrap = (id: string) => `<i class="bi bi-${id}"></i>`;
 
-	const items = {
+	const top = {
 		'Games': {
 			icon: material('sports_esports'),
 			href: '/',
@@ -26,25 +26,25 @@
 		'Flip': {
 			icon: material('flip')
 		},
+	};
+	const bottom = {
 		'LocalStorage': {
 			icon: material('storage'),
-			last: true
 		},
 		'GitHub': {
 			icon: bootstrap('github'),
-			last: true,
 			href: 'https://github.com/Floaterest/'
 		}
 	};
 	let selected = 'Games';
 </script>
 
-<Nav bind:selected {items}/>
+<Nav bind:selected {bottom} {top}/>
 
-<LocalStorage key="games" class="local" storage={init}/>
+<LocalStorage class="local" key="games" storage={init}/>
 
 <style>
     .local{
-        font-family: "consolas", monospace;
+        font-family: 'consolas', monospace;
     }
 </style>

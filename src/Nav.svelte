@@ -10,21 +10,36 @@
 		selected?: boolean,
 	}
 
-	export let items: { [id: string]: NavProp } = {};
+	export let top: { [id: string]: NavProp } = {};
+	export let bottom: { [id: string]: NavProp } = {};
 	export let selected: string;
 
-	Object.values(items).forEach(item => item.selected = false);
+	[top, bottom].forEach(items => Object.values(items).forEach(item => item.selected = false));
 
-	function onclick(key: string){
+	function topClick(key: string){
 		selected = key;
-		Object.keys(items).forEach(key => items[key].selected = key === selected);
+		Object.keys(top).forEach(k => top[k].selected = k == key);
+		Object.keys(bottom).forEach(k => bottom[k].selected = false);
+	}
+
+	function bottomClick(key: string){
+		selected = key;
+		Object.keys(top).forEach(k => top[k].selected = false);
+		Object.keys(bottom).forEach(k => bottom[k].selected = k == key);
 	}
 </script>
 
 <nav>
-    {#each Object.keys(items) as key}
-        <NavItem {...items[key]} bind:key={key} {onclick}/>
-    {/each}
+    <div class="top">
+        {#each Object.entries(top) as [key, value]}
+            <NavItem {...value} {key} on:click="{()=>topClick(key)}"/>
+        {/each}
+    </div>
+    <div class="bottom">
+        {#each Object.entries(bottom) as [key, value]}
+            <NavItem {...value} {key} on:click={()=>bottomClick(key)}/>
+        {/each}
+    </div>
 </nav>
 
 <style>
@@ -47,15 +62,27 @@
         gap: var(--nav-padding);
     }
 
-    nav :global(.text){
-        display: none;
-    }
-
     nav:hover{
         width: unset;
     }
 
+    nav :global(.text){
+        display: none;
+    }
+
     nav:hover :global(.text){
         display: inline;
+    }
+
+    nav .nav-top > :global(*:first-child){
+        padding-top: var(--nav-padding);
+    }
+
+    nav .bottom{
+        margin-top: auto;
+    }
+
+    nav .bottom > :global(*:last-child){
+        padding-bottom: var(--nav-padding);
     }
 </style>
