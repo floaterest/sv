@@ -10,21 +10,36 @@
 		selected?: boolean,
 	}
 
-	export let items: { [id: string]: NavProp } = {};
+	export let top: { [id: string]: NavProp } = {};
+	export let bottom: { [id: string]: NavProp } = {};
 	export let selected: string;
 
-	Object.values(items).forEach(item => item.selected = false);
+	[top, bottom].forEach(items => Object.values(items).forEach(item => item.selected = false));
 
-	function onclick(key: string){
+	function topClick(key: string){
 		selected = key;
-		Object.keys(items).forEach(key => items[key].selected = key === selected);
+		Object.keys(top).forEach(k => top[k].selected = k == key);
+		Object.keys(bottom).forEach(k => bottom[k].selected = false);
+	}
+
+	function bottomClick(key: string){
+		selected = key;
+		Object.keys(top).forEach(k => top[k].selected = false);
+		Object.keys(bottom).forEach(k => bottom[k].selected = k == key);
 	}
 </script>
 
 <nav>
-    {#each Object.keys(items) as key}
-        <NavItem {...items[key]} bind:key={key} {onclick}/>
-    {/each}
+    <div class="nav-top">
+        {#each Object.entries(top) as [key, value]}
+            <NavItem {...value} {key} on:click="{()=>topClick(key)}"/>
+        {/each}
+    </div>
+    <div class="nav-bottom">
+        {#each Object.entries(bottom) as [key, value]}
+            <NavItem {...value} {key} on:click={()=>bottomClick(key)}/>
+        {/each}
+    </div>
 </nav>
 
 <style>
@@ -45,6 +60,18 @@
         display: flex;
         flex-direction: column;
         gap: var(--nav-padding);
+    }
+
+    nav .nav-top > :global(*:first-child){
+        padding-top: var(--nav-padding);
+    }
+
+    nav .nav-bottom{
+        margin-top: auto;
+    }
+
+    nav .nav-bottom > :global(*:last-child){
+        padding-bottom: var(--nav-padding);
     }
 
     nav :global(.text){
