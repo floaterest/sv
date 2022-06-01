@@ -2,20 +2,18 @@
 	import JSObject from './JSObject.svelte';
 
 	export let key: string;
-	export let storage: any = {};
+	export let tabwidth = 2;
+	export let init: { [key: string]: any };
 
 	const { localStorage } = window;
-	if(!(key in localStorage)){
-		console.log('no storage');
-		localStorage.setItem(key, JSON.stringify(storage));
-	}
-	storage = JSON.parse(localStorage.getItem(key));
+	if(!(key in localStorage)) localStorage.setItem(key, JSON.stringify(init));
+	init = JSON.parse(localStorage.getItem(key));
 
-	$: window.localStorage.setItem(key, JSON.stringify(storage));
+	$: window.localStorage.setItem(key, JSON.stringify(init));
 </script>
 
 <div class="{$$props.class}" style="{$$props.style}">
-    <JSObject bind:object="{storage}"/>
+    <JSObject bind:object="{init}" {tabwidth}/>
 </div>
 
 <style>
