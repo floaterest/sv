@@ -7,7 +7,8 @@
 </script>
 
 {#if href}
-    <a class:selected class:swap {href} class="{$$props.class}" style="{$$props.style}" on:click>
+    <a class:selected class:swap {href} on:click
+       class="{$$props.class}" style="{$$props.style}">
         {#if icon}
             {@html icon}
         {:else}
@@ -16,7 +17,8 @@
         <span class="text">{key}</span>
     </a>
 {:else}
-    <div class:selected class:swap class="{$$props.class}" style="{$$props.style}" on:click>
+    <div class:selected class:swap on:click
+         class="{$$props.class}" style="{$$props.style}">
         {#if icon}
             {@html icon}
         {:else}
