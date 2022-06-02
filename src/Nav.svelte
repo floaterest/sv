@@ -74,7 +74,7 @@
         display: inline;
     }
 
-    nav .nav-top > :global(*:first-child){
+    nav .top > :global(*:first-child){
         padding-top: var(--nav-padding);
     }
 
