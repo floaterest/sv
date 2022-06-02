@@ -1,17 +1,20 @@
 export const config = {
 	key: 'sv',
-	init: {
-		object: {
-			key0: 'value',
-			key1: 1,
-			key2: true,
-			key3: [1, 2, 3],
-			key4: {
-				key5: 'value',
-				key6: 1,
-				key7: true,
-				key8: [1, 2, 3],
+	storage: {
+		JSObject: {
+			object: {
+				key0: 'value',
+				key1: 1,
+				key2: true,
+				key3: [1, 2, 3],
+				key4: {
+					key5: 'value',
+					key6: 1,
+					key7: true,
+					key8: [1, 2, 3],
+				},
 			},
+			tabwidth: 4,
 		},
 		array: [
 			'value',
@@ -38,14 +41,8 @@ export const navs = {
 			style: 'color: var(--accent)',
 			href: '/',
 		},
-		Minesweeper: {
-			icon: material('settings_applications')
-		},
-		Arithmetic: {
-			icon: material('calculate')
-		},
-		Flip: {
-			icon: material('flip')
+		JSObject: {
+			icon: material('code'),
 		},
 	},
 	bottom: {

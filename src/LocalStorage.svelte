@@ -3,17 +3,18 @@
 
 	export let key: string;
 	export let tabwidth = 2;
-	export let init: { [key: string]: any };
+	export let storage: { [key: string]: any };
 
 	const { localStorage } = window;
-	if(!(key in localStorage)) localStorage.setItem(key, JSON.stringify(init));
-	init = JSON.parse(localStorage.getItem(key));
 
-	$: window.localStorage.setItem(key, JSON.stringify(init));
+	if(!(key in localStorage)) localStorage.setItem(key, JSON.stringify(storage));
+	storage = JSON.parse(localStorage.getItem(key));
+
+	$: window.localStorage.setItem(key, JSON.stringify(storage));
 </script>
 
 <div class="{$$props.class}" style="{$$props.style}">
-    <JSObject bind:object="{init}" {tabwidth}/>
+    <JSObject bind:object="{storage}" {tabwidth}/>
 </div>
 
 <style>
