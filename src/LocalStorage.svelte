@@ -17,8 +17,9 @@
     <JSObject bind:object="{storage}" {tabwidth}/>
 </div>
 
-<style>
-    *{
-        user-select: none;
-    }
+<style lang="sass">
+    @use 'styles/yaml'
+    *
+        user-select: none
+
 </style>

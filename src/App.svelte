@@ -5,8 +5,6 @@
 
 	import { config, navs } from './constants';
 
-	import './monokai.css';
-	import './icons.css';
 
 	let selected = 'LocalStorage';
 	const components = {
@@ -26,3 +24,8 @@
 <Nav {...navs} bind:selected/>
 
 <svelte:component {...c(selected)} this="{components[selected]}"/>
+
+<style lang="sass" global>
+    @import 'styles/html'
+    @import 'styles/icons'
+</style>

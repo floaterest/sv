@@ -42,47 +42,52 @@
     </div>
 </nav>
 
-<style>
-    :global(body){
-        margin: 0 0 0 var(--nav-width);
-    }
+<style lang="sass">
+    @use 'styles/icons'
+    @use 'styles/colors'
 
-    nav{
-        height: 100%;
-        background-color: var(--nav-color);
-        white-space: nowrap;
+    $pad: 0.25em
+    $width: calc($pad * 2 + icons.$icon-size)
+    :global(body)
+        margin: 0 0 0 $width
+        background: colors.$darkest !important
 
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: var(--nav-width);
+    nav
+        height: 100%
+        background: colors.$black
+        white-space: nowrap
 
-        display: flex;
-        flex-direction: column;
-        gap: var(--nav-padding);
-    }
+        position: fixed
+        top: 0
+        left: 0
+        width: $width
 
-    nav:hover{
-        width: unset;
-    }
+        display: flex
+        flex-direction: column
+        gap: $pad
 
-    nav :global(.text){
-        display: none;
-    }
+        &:hover
+            width: unset
+            :global(.text)
+                display: inline
+        :global(.text)
+            display: none
 
-    nav:hover :global(.text){
-        display: inline;
-    }
+        .top > :global(*:first-child)
+            padding-top: $pad
 
-    nav .top > :global(*:first-child){
-        padding-top: var(--nav-padding);
-    }
+        .bottom
+            margin-top: auto
 
-    nav .bottom{
-        margin-top: auto;
-    }
+            & > :global(*:last-child)
+                padding-bottom: $pad
 
-    nav .bottom > :global(*:last-child){
-        padding-bottom: var(--nav-padding);
-    }
+    .top, .bottom
+        & > :global(div), :global(a)
+            user-select: none
+            cursor: pointer
+            display: flex
+            align-items: center
+            padding: 0 $pad
+            gap: $pad
 </style>
