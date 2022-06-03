@@ -2,13 +2,14 @@
 
 > Some Svelte components (and SASS stylesheets)
 
-# Installation
+## Installation
 
 ```bash
 npm i @floaterest/sv -D
 ```
 
-# Components
+# Features
+## Components
 
 - [`Nav.svelte`](./src/Nav.svelte)
   - `<nav>` bar
