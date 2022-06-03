@@ -1,6 +1,6 @@
 # @floaterest/sv
 
-> My custom Svelte components (and some stylesheets as well)
+> Some Svelte components (and SASS stylesheets)
 
 # Installation
 
@@ -10,5 +10,7 @@ npm i @floaterest/sv -D
 
 # Components
 
-> the developer is too lazy and didn't add any descriptions<br>
-> for now, see [src/App.svelte](src/App.svelte) for examples
+- [`Nav.svelte`](./src/Nav.svelte)
+  - `<nav>` bar
+- [`LocalStroage.svelte`](./src/LocalStorage.svelte)
+  - show editable `localStorage` in YAML style
