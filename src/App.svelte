@@ -1,40 +1,31 @@
 <script lang="ts">
 	import Nav from './Nav.svelte';
-	import './monokai.css';
-	import './icons.css';
+	import LocalStorage from './LocalStorage.svelte';
+	import JSObject from './JSObject.svelte';
 
-	const material = (id: string) => `<span class="material-icons">${id}</span>`;
-	const bootstrap = (id: string) => `<i class="bi bi-${id}"></i>`;
+	import { config, navs } from './constants';
 
-	const top = {
-		key: 'Games',
-		icon: material('sports_esports'),
-		swap: true,
-		style: 'color: var(--accent)'
+
+	let selected = 'LocalStorage';
+	const components = {
+		JSObject,
+		LocalStorage
 	};
-	const items = [
-		{
-			key: 'Minesweeper',
-			icon: material('settings_applications')
-		},
-		{
-			key: 'Arithmetic',
-			icon: material('calculate')
-		},
-		{
-			key: 'Flip',
-			icon: material('flip')
-		},
-		{
-			key: 'GitHub',
-			icon: bootstrap('github'),
-			last: true,
-			href: 'https://github.com/Floaterest/'
+
+	function c(s: string){
+		if(s === 'LocalStorage'){
+			return { ...config, style: 'font-family: consolas, monospace;' };
+		}else if(s === 'JSObject'){
+			return JSON.parse(localStorage.getItem('sv')).JSObject;
 		}
-	];
-	let selected = 'Games';
+	}
 </script>
 
-<Nav {top} {items} bind:selected/>
+<Nav {...navs} bind:selected/>
 
-{selected}
+<svelte:component {...c(selected)} this="{components[selected]}"/>
+
+<style lang="sass" global>
+    @import 'styles/html'
+    @import 'styles/icons'
+</style>

@@ -2,14 +2,12 @@
 	export let key: string;
 	export let icon = '';
 	export let href = '';
-	export let last = false;
 	export let swap = false;
 	export let selected = false;
-	export let onclick: (key: string) => void;
 </script>
 
 {#if href}
-    <a on:click={()=>onclick(key)} class:selected class:swap class:last {href}
+    <a class:selected class:swap {href} on:click
        class="{$$props.class}" style="{$$props.style}">
         {#if icon}
             {@html icon}
@@ -19,7 +17,7 @@
         <span class="text">{key}</span>
     </a>
 {:else}
-    <div on:click={()=>onclick(key)} class:selected class:swap class:last
+    <div class:selected class:swap on:click
          class="{$$props.class}" style="{$$props.style}">
         {#if icon}
             {@html icon}
@@ -46,18 +44,6 @@
 
     .swap{
         direction: rtl;
-    }
-
-    .last{
-        margin-top: auto;
-    }
-
-    :first-child{
-        padding-top: var(--nav-padding);
-    }
-
-    :last-child{
-        padding-bottom: var(--nav-padding);
     }
 </style>
 

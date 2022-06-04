@@ -1,0 +1,27 @@
+@use './colors'
+
+:global(body)
+    color: colors.$white
+    background: colors.$black
+
+    :global(a)
+        text-decoration: none
+        color: colors.$yellow
+
+    :global(input)
+        color: unset
+        background: unset
+        border: unset
+        font: unset
+        padding: 0
+        &:focus-visible
+            outline: 1px colors.$white solid
+        // Chrome, Safari, Edge, Opera
+        &::-webkit-outer-spin-button, &::-webkit-inner-spin-button
+            -webkit-appearance: none
+            margin: 0
+
+    // Firefox
+    :global(input[type=number])
+        -moz-appearance: textfield
+
